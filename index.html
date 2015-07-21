@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html ng-app="speroteck-site">
+<html ng-app="speroteck-site" ng-controller="MainController">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Speroteck</title>
+    <title>{{seo.pageTitle}}</title>
+    <meta name="Description" content="{{seo.pageMetaDescription}}">
     <link rel="stylesheet" href="./app/assets/libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./app/assets/libs/bootstrap/css/theme.min.css">
     <link rel="stylesheet" href="./app/assets/css/style.css">
@@ -17,7 +18,6 @@
 <script src="./app/assets/libs/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="./app/assets/libs/angular/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="./app/app.js" type="text/javascript" charset="utf-8"></script>
-<script src="./app/directives/directives.js" type="text/javascript" charset="utf-8"></script>
 <script src="./app/assets/libs/jQuery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="./app/assets/libs/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 </body>

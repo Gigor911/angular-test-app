@@ -1,12 +1,1 @@
-.heading-image-full-width {
-  width: 100%;
-  position: absolute;
-  top: 0;
-}
-.heading-image-full-width img {
-  width: 100%;
-  display: block;
-}
-.content-body {
-  margin-top: 400px;
-}
+.heading-image-full-width{width:100%;position:fixed;top:0;height:400px}.heading-image-full-width img{width:100%;display:block}.content-body{position:relative;top:400px}
