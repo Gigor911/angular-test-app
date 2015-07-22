@@ -9,4 +9,4 @@ speroteck.controller('HomePageController', ['$scope', function($scope) {
         pageTitle : 'Home Page',
         pageMetaDescription : 'Test SEO :)',
     }
-}]); 
+}]);
