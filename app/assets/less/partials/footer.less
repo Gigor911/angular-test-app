@@ -1,0 +1,43 @@
+footer {
+  .container {
+    padding: 25px 0;
+  }
+  background-color: @dark-grey;
+  text-align: center;
+  span {
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: 300;
+    color: @footer-text;
+  }
+  a {
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: 300;
+    transition: all ease 0.3s;
+    &:hover {
+      transition: all ease 0.3s;
+      text-decoration: none;
+    }
+  }
+  .footer-link {
+    display: inline-block;
+    &:not(:last-child) {
+      border-right: 1px solid @footer-text;
+    }
+    padding: 0 10px;
+    a {
+      color: @footer-text;
+      &:hover {
+        color: @footer-text-hover;
+      }
+    }
+  }
+  .footer-info {
+    span {
+      padding-top: 20px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}

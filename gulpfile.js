@@ -10,7 +10,7 @@ var plumber = require('gulp-plumber');
 var LessPluginCleanCSS = require('less-plugin-clean-css'),
     LessPluginAutoPrefix = require('less-plugin-autoprefix'),
     cleancss = new LessPluginCleanCSS({ advanced: true }),
-    autoprefix= new LessPluginAutoPrefix({ browsers: ["last 10 versions", "> 0.5%"] });
+    autoprefix= new LessPluginAutoPrefix({ browsers: ["last 20 versions", "> 0.5%"] });
 var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('scripts', function () {

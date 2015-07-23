@@ -2,13 +2,14 @@ speroteck.directive('siteHeader', function () {
     return {
         // controller: function($scope, $element, $attrs, $transclude) {},
         restrict: 'E',
-        templateUrl: 'app/views/partials/header.html',
+        templateUrl: 'views/partials/header.html',
+        controller: 'MenuController',
     };
 });
 speroteck.directive('siteFooter', function () {
     return {
         // controller: function($scope, $element, $attrs, $transclude) {},
         restrict: 'E',
-        templateUrl: 'app/views/partials/footer.html',
+        templateUrl: 'views/partials/footer.html',
     };
 });
