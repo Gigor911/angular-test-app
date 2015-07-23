@@ -2,7 +2,7 @@ var speroteck = angular.module('speroteck-site', ['ngRoute']);
 speroteck.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
         when('/', {
-            templateUrl: 'app/views/home.html',
+            templateUrl: 'views/home.html',
             controller: 'HomePageController'
         });
 }]);
@@ -22,13 +22,13 @@ speroteck.directive('siteHeader', function () {
     return {
         // controller: function($scope, $element, $attrs, $transclude) {},
         restrict: 'E',
-        templateUrl: 'app/views/partials/header.html',
+        templateUrl: 'views/partials/header.html',
     };
 });
 speroteck.directive('siteFooter', function () {
     return {
         // controller: function($scope, $element, $attrs, $transclude) {},
         restrict: 'E',
-        templateUrl: 'app/views/partials/footer.html',
+        templateUrl: 'views/partials/footer.html',
     };
 });
