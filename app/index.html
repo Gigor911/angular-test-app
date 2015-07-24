@@ -9,10 +9,11 @@
     <!-- dinamic meta -->
     <title>{{seo.pageTitle}}</title>
     <meta name="Description" content="{{seo.pageMetaDescription}}">
-    
+    <!--[if gte IE 9]><style type="text/css">.gradient {filter: none;}</style><![endif]-->
     <!-- stylesheets -->
     <link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/libs/bootstrap/css/theme.min.css">
+    <link rel="stylesheet" href="assets/libs/hover/hover-min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href='//fonts.googleapis.com/css?family=Roboto:400,700,500,300,300italic,400italic,500italic,700italic'
@@ -24,18 +25,19 @@
     
     <!-- content -->
     <main>
-        <!-- dinamic content -->
-        <ng-view></ng-view>
+        <!-- dynamic content -->
+        <div class="push-footer">
+            <div class="page" ng-view></div>
+        </div>
+        <!-- footer -->
+        <site-footer></site-footer>
     </main>
-
-    <!-- footer -->
-    <site-footer></site-footer>
-
     <!-- scripts -->
-    <script src="assets/libs/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="assets/libs/angular/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="app.js" type="text/javascript" charset="utf-8"></script>
-    <script src="assets/libs/jQuery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="assets/libs/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/libs/angular/angular.min.js"></script>
+    <script src="assets/libs/angular/angular-route.min.js"></script>
+    <script src="assets/libs/angular/angular-animate.min.js"></script>
+    <script src="app.js"></script>
+    <script src="assets/libs/jQuery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

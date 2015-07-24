@@ -1,0 +1,23 @@
+<div class="content-bg pg_ourteam">
+    <div class="heading-image-full-width">
+        <img ng-src="assets/images/header-images/speroteck-ourteam.jpg" alt="">
+        <div class="heading-text-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>Our Team</h1>
+                        <span class="text-under-heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container content-body">
+        <div class="row our-team">
+            <div class="col-md-3 hvr-grow-shadow" ng-repeat="member in team">
+                <img class="member-img" ng-src="{{member.image}}">
+                <p class="member-name .gradient">{{member.name}}</p>
+            </div>
+        </div>
+    </div>
+</div>
