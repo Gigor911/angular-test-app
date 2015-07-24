@@ -34,6 +34,7 @@ var clientsCtrl = require('./controllers/clients');
 
 // Routs ==================================================
 app.get('/team', teamCtrl);
+app.post('/new_team', teamCtrl);
 
 // Start app ===============================================
 app.listen(port); 

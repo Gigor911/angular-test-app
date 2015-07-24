@@ -10,6 +10,6 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
             controller: 'AdminController'
         }).
         otherwise({
-        	tredirectTo: '/'
+        	redirectTo: '/'
       	});
 }]);

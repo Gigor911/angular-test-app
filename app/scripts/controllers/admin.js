@@ -1,6 +1,5 @@
-speroteck.controller('AdminController', ['$scope', function($scope) {
-    $scope.seo = {
-        pageTitle : '',
-        pageMetaDescription : '',
+speroteck.controller('AdminController', ['fileUpload', '$scope', '$http', function(fileUpload,$scope,$http) {
+    $scope.submitForm = function () {
+ 
     }
 }]);

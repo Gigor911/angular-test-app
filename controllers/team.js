@@ -9,6 +9,7 @@ var Schema = mongoose.Schema;
 // Mongoose schema =================================================
 var teamMemberSchema = new mongoose.Schema({
   	name: String,
+    lastName: String,
   	image: String
 });
 
@@ -54,11 +55,19 @@ Olena.save(function(err) {
 //=================================================
 
 // Team API =================================================
+// Send object from DB =================================================
 router.get('/team', function(req, res, next) {
 	team.find(function(err, members) {
 	  if (err) return console.error(err);
 	  res.send(members)
 	});
 });
+
+// Get data for new team member =================================================
+router.post('/new_team', function(req, res, next) {
+    console.log(req.body)
+    res.end("ok")
+});
+
 
 module.exports = router;

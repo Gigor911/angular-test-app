@@ -10,14 +10,13 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
             controller: 'AdminController'
         }).
         otherwise({
-        	tredirectTo: '/'
+        	redirectTo: '/'
       	});
 }]);
 
-speroteck.controller('AdminController', ['$scope', function($scope) {
-    $scope.seo = {
-        pageTitle : '',
-        pageMetaDescription : '',
+speroteck.controller('AdminController', ['fileUpload', '$scope', '$http', function(fileUpload,$scope,$http) {
+    $scope.submitForm = function () {
+ 
     }
 }]);
 speroteck.controller('MenuController', ['$scope', function($scope) {
@@ -100,3 +99,19 @@ speroteck.directive('siteFooter', function () {
         templateUrl: 'views/partials/footer.html',
     };
 });
+speroteck.service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(file, uploadUrl){
+        var fd = new FormData();
+        fd.append('file', file);
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+        .success(function(data){
+            alert(data)
+        })
+        .error(function(data){
+            alert(data)
+        });
+    }
+}]);
