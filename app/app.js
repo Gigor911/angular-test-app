@@ -14,10 +14,24 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
       	});
 }]);
 
-speroteck.controller('AdminController', ['fileUpload', '$scope', '$http', function(fileUpload,$scope,$http) {
-    $scope.submitForm = function () {
- 
-    }
+speroteck.controller('AdminController', ['$scope', '$http', function($scope,$http) {
+    $scope.uploadFile = function() {
+	    var form = document.getElementById("new_team_form");
+		var data = new FormData(form);
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', '/new_team', true);
+
+		xhr.send(data);
+
+		xhr.onload = function() {
+
+	        if (this.responseText === "ok") {
+	            alert("team member was created succesfully")
+	        } else{
+	           alert(this.responseText);
+	        }
+	    }
+	};
 }]);
 speroteck.controller('MenuController', ['$scope', function($scope) {
     $('.cd-3d-nav-trigger').on('click', function(){
@@ -101,17 +115,6 @@ speroteck.directive('siteFooter', function () {
 });
 speroteck.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function(file, uploadUrl){
-        var fd = new FormData();
-        fd.append('file', file);
-        $http.post(uploadUrl, fd, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-        })
-        .success(function(data){
-            alert(data)
-        })
-        .error(function(data){
-            alert(data)
-        });
+        
     }
 }]);
