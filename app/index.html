@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html ng-app="speroteck-site" ng-controller="MainController">
 <head>
+    <!-- meta -->
     <meta http-equiv="content-type" charset="utf-8" content="text/html;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+
+    <!-- dinamic meta -->
     <title>{{seo.pageTitle}}</title>
     <meta name="Description" content="{{seo.pageMetaDescription}}">
+    
+    <!-- stylesheets -->
     <link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/libs/bootstrap/css/theme.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -13,15 +19,20 @@
           rel='stylesheet' type='text/css'>
 </head>
 <body>
-<site-header></site-header>
-<main>
-<div ng-view></div>
-<site-footer></site-footer>
-</main>
-<script src="assets/libs/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="assets/libs/angular/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="app.js" type="text/javascript" charset="utf-8"></script>
-<script src="assets/libs/jQuery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="assets/libs/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <!-- header -->
+    <site-header></site-header>
+
+    <!-- dinamic content -->
+    <ng-view></ng-view>
+
+    <!-- footer -->
+    <site-footer></site-footer>
+
+    <!-- scripts -->
+    <script src="assets/libs/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/libs/angular/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="app.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/libs/jQuery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
