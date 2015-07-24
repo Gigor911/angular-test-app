@@ -1,4 +1,4 @@
-var speroteck = angular.module('speroteck-site', ['ngRoute']);
+var speroteck = angular.module('speroteck-site', ['ngRoute', 'ngAnimate']);
 speroteck.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
         when('/', {
@@ -9,8 +9,12 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'views/admin.html',
             controller: 'AdminController'
         }).
+        when('/our-team', {
+            templateUrl: 'views/ourteam.html',
+            controller: 'OurTeamController'
+        }).
         otherwise({
-        	tredirectTo: '/'
+        	redirectTo: '/'
       	});
 }]);
 
@@ -72,6 +76,16 @@ speroteck.controller('MenuController', ['$scope', function($scope) {
         return this;
     };
 
+}]);
+speroteck.controller('OurTeamController', ['$scope', '$http', function ($scope, $http) {
+    $scope.team = [];
+    $http.get('/team').success(function(data) {
+        $scope.team = data;
+    });
+    $scope.$parent.seo = {
+        pageTitle : 'Our Team',
+        pageMetaDescription : 'Test SEO :)'
+    };
 }]);
 speroteck.controller('MainController', ['$scope', function($scope) {
     $scope.seo = {

@@ -3,16 +3,81 @@ li {
 }
 .heading-image-full-width {
   overflow: hidden;
+  position: relative;
+  .heading-text-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    .container {
+      position: relative;
+      left: -50%;
+      .text-under-heading {
+        font-size: 24px;
+        line-height: 36px;
+        font-weight: 300;
+        text-shadow: 1px 1px 0 @text-shadow;
+        a {
+          transition: all ease 0.3s;
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+  }
   img {
     width: 1920px;
     height: 400px;
     display: block;
   }
-}
-main {
-  padding-top: 80px;
+
 }
 p {
   font-size: 16px;
   font-weight: 300;
+}
+/*Push footer to bottom*/
+html,body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+main {
+  min-height: 100%;
+  position: relative;
+  padding-top: 80px;
+}
+.push-footer {
+  padding-bottom: 210px;
+}
+footer {
+  width: 100%;
+  height: 210px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+/*Animate ng-view*/
+.page {
+  background: white;
+
+}
+.page.ng-enter {
+  animation: slideInRight 0.5s both ease-in;
+  z-index: 99999;
+  position: absolute;
+}
+.page.ng-leave {
+  animation: slideOutLeft 0.5s both ease-in;
+  z-index: 99998;
+  position: absolute;
+}
+@keyframes slideOutLeft {
+  to      { transform: translateX(-100%); }
+}
+/* slide in from the right */
+@keyframes slideInRight {
+  from    { transform:translateX(100%); }
+  to      { transform: translateX(0); }
 }

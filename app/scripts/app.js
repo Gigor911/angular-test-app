@@ -1,4 +1,4 @@
-var speroteck = angular.module('speroteck-site', ['ngRoute']);
+var speroteck = angular.module('speroteck-site', ['ngRoute', 'ngAnimate']);
 speroteck.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
         when('/', {
@@ -9,7 +9,11 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'views/admin.html',
             controller: 'AdminController'
         }).
+        when('/our-team', {
+            templateUrl: 'views/ourteam.html',
+            controller: 'OurTeamController'
+        }).
         otherwise({
-        	tredirectTo: '/'
+        	redirectTo: '/'
       	});
 }]);
