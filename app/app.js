@@ -1,4 +1,4 @@
-var speroteck = angular.module('speroteck-site', ['ngRoute', 'ngAnimate']);
+var speroteck = angular.module('speroteck-site', ['ngRoute']);
 speroteck.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
         when('/', {
@@ -9,19 +9,14 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'views/admin.html',
             controller: 'AdminController'
         }).
-        when('/our-team', {
-            templateUrl: 'views/ourteam.html',
-            controller: 'OurTeamController'
-        }).
         otherwise({
         	redirectTo: '/'
       	});
 }]);
 
-speroteck.controller('AdminController', ['$scope', function($scope) {
-    $scope.seo = {
-        pageTitle : '',
-        pageMetaDescription : '',
+speroteck.controller('AdminController', ['fileUpload', '$scope', '$http', function(fileUpload,$scope,$http) {
+    $scope.submitForm = function () {
+ 
     }
 }]);
 speroteck.controller('MenuController', ['$scope', function($scope) {
@@ -77,16 +72,6 @@ speroteck.controller('MenuController', ['$scope', function($scope) {
     };
 
 }]);
-speroteck.controller('OurTeamController', ['$scope', '$http', function ($scope, $http) {
-    $scope.team = [];
-    $http.get('/team').success(function(data) {
-        $scope.team = data;
-    });
-    $scope.$parent.seo = {
-        pageTitle : 'Our Team',
-        pageMetaDescription : 'Test SEO :)'
-    };
-}]);
 speroteck.controller('MainController', ['$scope', function($scope) {
     $scope.seo = {
         pageTitle : '',
@@ -114,3 +99,19 @@ speroteck.directive('siteFooter', function () {
         templateUrl: 'views/partials/footer.html',
     };
 });
+speroteck.service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(file, uploadUrl){
+        var fd = new FormData();
+        fd.append('file', file);
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+        .success(function(data){
+            alert(data)
+        })
+        .error(function(data){
+            alert(data)
+        });
+    }
+}]);

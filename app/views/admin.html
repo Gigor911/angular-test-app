@@ -1,0 +1,26 @@
+<form name="newTeam" id="new_team_form" class="col-xs-12 col-sm-6 col-sm-offset-3">
+	<legend>New team member</legend>
+
+	<div class="row">
+		<div class="form-group col-xs-12 col-sm-6">
+			<label for="name">Name</label>
+			<input type="text" class="form-control" id="name" name="Name" placeholder="Name">
+		</div>
+		<div class="form-group col-xs-12 col-sm-6">
+			<label for="lastName">Last Name</label>
+			<input type="text" class="form-control" id="lastName" name="LastName" placeholder="Last Name">
+		</div>
+		<div class="form-group col-xs-12 col-sm-6">
+			<label for="image">Image uploading</label>
+			<input type="file" class="form-control" id="image" name="Image" placeholder="Image">
+		</div>
+	</div>
+
+	<button type="button" ng-click="submitForm()" class="btn btn-primary col-xs-12 col-sm-6 col-sm-offset-3">
+		Submit
+	</button>
+
+	<div class="clearfix"></div>
+	<br>
+</form>
+<div class="clearfix"></div>
