@@ -4,5 +4,12 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
         when('/', {
             templateUrl: 'views/home.html',
             controller: 'HomePageController'
-        });
+        }).
+        when('/admin', {
+            templateUrl: 'views/admin.html',
+            controller: 'AdminController'
+        }).
+        otherwise({
+        	tredirectTo: '/'
+      	});
 }]);

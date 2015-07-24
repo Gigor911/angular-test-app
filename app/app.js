@@ -4,7 +4,21 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
         when('/', {
             templateUrl: 'views/home.html',
             controller: 'HomePageController'
-        });
+        }).
+        when('/admin', {
+            templateUrl: 'views/admin.html',
+            controller: 'AdminController'
+        }).
+        otherwise({
+        	tredirectTo: '/'
+      	});
+}]);
+
+speroteck.controller('AdminController', ['$scope', function($scope) {
+    $scope.seo = {
+        pageTitle : '',
+        pageMetaDescription : '',
+    }
 }]);
 speroteck.controller('MenuController', ['$scope', function($scope) {
     $('.cd-3d-nav-trigger').on('click', function(){
