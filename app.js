@@ -37,6 +37,19 @@ var clientsCtrl = require('./controllers/clients');
 app.get('/team', teamCtrl);
 app.post('/new_team', teamCtrl);
 
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// Error handler ==================================================
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.end(err.message);
+});
+
 // Start app ===============================================
 app.listen(port); 
 console.log('server listening on port:  ' + port);

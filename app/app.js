@@ -5,8 +5,8 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'views/home.html',
             controller: 'HomePageController'
         }).
-        when('/admin', {
-            templateUrl: 'views/admin.html',
+        when('/dashboard', {
+            templateUrl: 'views/dashboard/index.html',
             controller: 'AdminController'
         }).
         when('/our-team', {
@@ -18,25 +18,6 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
       	});
 }]);
 
-speroteck.controller('AdminController', ['$scope', '$http', function($scope,$http) {
-    $scope.uploadFile = function() {
-	    var form = document.getElementById("new_team_form");
-		var data = new FormData(form);
-		var xhr = new XMLHttpRequest();
-		xhr.open('POST', '/new_team', true);
-
-		xhr.send(data);
-
-		xhr.onload = function() {
-
-	        if (this.responseText === "ok") {
-	            alert("team member was created succesfully")
-	        } else{
-	           alert(this.responseText);
-	        }
-	    }
-	};
-}]);
 speroteck.controller('MenuController', ['$scope', function($scope) {
     $('.cd-3d-nav-trigger').on('click', function(){
         toggle3dBlock(!$('.cd-header').hasClass('nav-is-visible'));
@@ -127,8 +108,42 @@ speroteck.directive('siteFooter', function () {
         templateUrl: 'views/partials/footer.html',
     };
 });
-speroteck.service('fileUpload', ['$http', function ($http) {
-    this.uploadFileToUrl = function(file, uploadUrl){
-        
-    }
+speroteck.controller('AdminController', ['$scope', '$http', function($scope,$http) {
+	$scope = [];
+}]);
+speroteck.controller('NavigationController', ['$scope', '$http','$element', function($scope,$http,$element) {
+	// console.log($($element).children('li').length)
+}]);
+speroteck.controller('ourTeamDashController', ['$scope', '$http', function($scope,$http) {
+	// Get data from server and create table with team members ===========================================
+	$scope.team = [];
+    $http.get('/team').success(function(data) {
+        $scope.team = data;
+        console.log(data)
+    });
+
+    // File uploading fucntion ===========================================
+    $scope.uploadFile = function() {
+	    var form = document.getElementById("new_team_form");
+		var data = new FormData(form);
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', '/new_team', true);
+		xhr.send(data);
+
+		xhr.onload = function() {
+	        if (this.responseText === "ok") {
+	        	// Notification ===========================================
+	            alert("team member was created succesfully")
+	            // Get new data from server and put to scope ===========================================
+	            $http.get('/team').success(function(data) {
+			        $scope.team = data;
+			        console.log(data)
+			    });
+	        } else{
+	        	// Notification ===========================================
+	           	alert(this.responseText);
+	        }
+	    }
+	};
+	$scope.$apply;
 }]);

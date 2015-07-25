@@ -5,8 +5,8 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'views/home.html',
             controller: 'HomePageController'
         }).
-        when('/admin', {
-            templateUrl: 'views/admin.html',
+        when('/dashboard', {
+            templateUrl: 'views/dashboard/index.html',
             controller: 'AdminController'
         }).
         when('/our-team', {

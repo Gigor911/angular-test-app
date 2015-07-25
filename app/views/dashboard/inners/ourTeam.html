@@ -1,0 +1,49 @@
+<div class="container" ng-controller="ourTeamDashController">
+	<br>
+
+	<!-- Form for creating new team member -->
+	<form name="newTeam" id="new_team_form" action="/new_team" enctype="multipart/form-data" method="post">
+		<legend>New team member</legend>
+
+		<div class="row">
+			<div class="form-group col-xs-12 col-sm-3">
+				<label for="name">Name</label>
+				<input type="text" class="form-control" id="name" name="Name" placeholder="Name" required >
+			</div>
+			<div class="form-group col-xs-12 col-sm-3">
+				<label for="lastName">Last Name</label>
+				<input type="text" class="form-control" id="lastName" name="LastName" placeholder="Last Name" required >
+			</div>
+			<div class="form-group col-xs-12 col-sm-3">
+				<label for="image">Image uploading</label>
+				<input type="file" class="form-control" id="image" placeholder="Image" type="file" name="file" required >
+			</div>
+			<div class="form-group col-xs-12 col-sm-3">
+				<label for="">Form submit</label>
+				<div></div>
+				<div ng-click="uploadFile()" class="btn btn-primary col-xs-12">Submit</div>
+			</div>
+		</div>
+	</form>
+
+	<div class="clearfix"></div>
+	
+	<!-- team table -->
+	<table class="table table-hover table-bordered">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Last Name</th>
+				<th>image path</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="member in team">
+				<td>{{member.name}}</td>
+				<td>{{member.lastName}}</td>
+				<td>{{member.image}}</td>
+			</tr>
+		</tbody>
+	</table>
+	
+</div>
