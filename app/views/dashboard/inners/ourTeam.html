@@ -15,6 +15,24 @@
 				<input type="text" class="form-control" id="lastName" name="LastName" placeholder="Last Name" required >
 			</div>
 			<div class="form-group col-xs-12 col-sm-3">
+				<label for="email">Email</label>
+				<input type="email" class="form-control" id="email" name="Email" placeholder="Email" required >
+			</div>
+			<div class="form-group col-xs-12 col-sm-3">
+				<label for="position">Position</label>
+				<select class="form-control" id="position" name="Position" required >
+					<option value="Frontend developer">Frontend developer</option>
+					<option value="Backend developer">Backend developer</option>
+					<option value="System administrator">System administrator</option>
+					<option value="Quality assurance">Quality assurance</option>
+					<option value="Team leader">Team leader</option>
+					<option value="Technical leader">Technical leader</option>
+					<option value="Project manager">Project manager</option>
+					<option value="Head manager">Head manager</option>
+					<option value="Founder">Founder</option>
+				</select>
+			</div>
+			<div class="form-group col-xs-12 col-sm-3">
 				<label for="image">Image uploading</label>
 				<input type="file" class="form-control" id="image" placeholder="Image" type="file" name="file" required >
 			</div>
@@ -27,21 +45,45 @@
 	</form>
 
 	<div class="clearfix"></div>
+
+	<hr>
 	
+	<div class="row">
+		<div class="col-xs-12 col-sm-3">
+			<label for="team_filter">Filter</label>
+	    	<input type="text" class="form-control" id="team_filter" placeholder="filter" ng-model="teamSearch">
+		</div>
+	</div>
+	<br>
+
 	<!-- team table -->
 	<table class="table table-hover table-bordered">
 		<thead>
 			<tr>
+				<th>Image</th>
+				<th>Id</th>
 				<th>Name</th>
 				<th>Last Name</th>
-				<th>image path</th>
+				<th>Email</th>
+				<th>Position</th>
+				<th>actions</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="member in team">
+			<tr ng-repeat="member in team | orderBy: '_id' | filter:teamSearch">
+				<td class="text-center">
+					<img src="{{member.image}}" alt="" style="width: 40px">
+				</td>
+				<td>{{member._id}}</td>
 				<td>{{member.name}}</td>
 				<td>{{member.lastName}}</td>
-				<td>{{member.image}}</td>
+				<td>{{member.email}}</td>
+				<td>{{member.position}}</td>
+				<td>
+					<div class="btn btn-danger btn-block">
+						<span class="fa fa-times" aria-hidden="true"></span>
+					</div>
+				</td>
 			</tr>
 		</tbody>
 	</table>

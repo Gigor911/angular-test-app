@@ -12,7 +12,9 @@ var multer      = require('multer');
 var teamMemberSchema = new mongoose.Schema({
 	name: String,
   lastName: String,
-	image: String
+	image: String,
+  email: String,
+  position: String
 });
 
 // Mongoose model =================================================
@@ -53,7 +55,7 @@ router.post('/new_team',upload.single('file'), function (req, res, next) {
   var file = req.file;
 
   // Check for existing required fields in the request =================================================
-  if (body.Name && body.LastName && file) {
+  if (body.Name && body.LastName && body.Email && body.Position && file) {
 
     // Check if image type is JPEG =================================================
     if (file.mimetype == "image/jpeg") {
@@ -69,7 +71,9 @@ router.post('/new_team',upload.single('file'), function (req, res, next) {
       var member = new team({
         name: body.Name,
         lastName: body.LastName,
-        image: imgPathResponse + file.filename + ".jpg"
+        image: imgPathResponse + file.filename + ".jpg",
+        email: body.Email,
+        position: body.Position
       });
 
       member.save(function(err) {

@@ -119,7 +119,6 @@ speroteck.controller('ourTeamDashController', ['$scope', '$http', function($scop
 	$scope.team = [];
     $http.get('/team').success(function(data) {
         $scope.team = data;
-        console.log(data)
     });
 
     // File uploading fucntion ===========================================
@@ -137,7 +136,6 @@ speroteck.controller('ourTeamDashController', ['$scope', '$http', function($scop
 	            // Get new data from server and put to scope ===========================================
 	            $http.get('/team').success(function(data) {
 			        $scope.team = data;
-			        console.log(data)
 			    });
 	        } else{
 	        	// Notification ===========================================
