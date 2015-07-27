@@ -7,7 +7,8 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
         }).
         when('/dashboard', {
             templateUrl: 'views/dashboard/index.html',
-            controller: 'AdminController'
+            controller: 'AdminController',
+            //noMenu: true
         }).
         when('/our-team', {
             templateUrl: 'views/ourteam.html',
@@ -16,4 +17,9 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
         otherwise({
         	redirectTo: '/'
       	});
+}]);
+speroteck.run(['$route', '$rootScope', '$location', function ($route, $rootScope, $location) {
+    $rootScope.$on("$routeChangeSuccess", function(){
+        $rootScope.noMenu = $location.path() === '/dashboard';
+    });
 }]);

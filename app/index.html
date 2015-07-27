@@ -15,13 +15,13 @@
     <link rel="stylesheet" href="assets/libs/bootstrap/css/theme.min.css">
     <link rel="stylesheet" href="assets/libs/hover/hover-min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,700,500,300,300italic,400italic,500italic,700italic'
           rel='stylesheet' type='text/css'>
 </head>
 <body>
     <!-- header -->
-    <site-header></site-header>
+    <site-header ng-hide="noMenu"></site-header>
     
     <!-- content -->
     <main>
@@ -30,7 +30,7 @@
             <div class="page" ng-view></div>
         </div>
         <!-- footer -->
-        <site-footer></site-footer>
+        <site-footer ng-hide="noMenu"></site-footer>
     </main>
     <!-- scripts -->
     <script src="assets/libs/angular/angular.min.js"></script>
