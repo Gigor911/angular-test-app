@@ -1,16 +1,16 @@
 <div class="pg_admin">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs nav-justified" ng-controller="NavigationController">
-        <li class="active">
+        <li data-link="our_team">
             <a href="">Our team</a>
         </li>
-        <li>
+        <li data-link="our_clients">
             <a href="">Our Clients</a>
         </li>
-        <li>
-            <a href="">Pages Editor</a>
+        <li data-link="news" class="active">
+            <a href="">News</a>
         </li>
-        <li>
+        <li data-link="statistics">
             <a href="">Statistics</a>
         </li>
     </ul>
@@ -18,9 +18,20 @@
         <a class="btn btn-danger pull-right" href="#/">Return to storefront</a>
         <a class="btn btn-danger pull-left" href="#/" target="_blank">Storefront in new tab</a>
     </div>
-    <div ng-include src="'views/dashboard/inners/ourTeam.html'"></div>
-    <div class="container return-link-bottom">
-        <a class="btn btn-danger pull-right" href="#/">Return to storefront</a>
-        <a class="btn btn-danger pull-left" href="#/" target="_blank">Storefront in new tab</a>
+
+    <div class="tabs">
+        <div id="our_team">
+            <div ng-include src="'views/dashboard/inners/ourTeam.html'"></div>
+        </div>
+        <div id="our_clients">
+            <!--  -->
+        </div>
+        <div id="news" class="active">
+            <div ng-include src="'views/dashboard/inners/news.html'"></div>
+        </div>
+        <div id="statistics">
+            
+        </div>
     </div>
+
 </div>

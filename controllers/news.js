@@ -7,40 +7,41 @@ var fs          = require('fs');
 var db          = mongoose.connection;
 var Schema      = mongoose.Schema;
 var multer      = require('multer');
+var moment      = require("moment");
 
 // Mongoose schema =================================================
-var teamMemberSchema = new mongoose.Schema({
-	name: String,
-  lastName: String,
+var newsMemberSchema = new mongoose.Schema({
+	title: String,
+  description: String,
 	image: String,
-  email: String,
-  position: String
+  date: String,
+  content: String
 });
 
 // Mongoose model =================================================
-var team = mongoose.model('team', teamMemberSchema);
+var team = mongoose.model('news', newsMemberSchema);
 
 // Variables =================================================
-var imgPathResponse = "./media/team/";
-var imgPath         = "./app/media/team/";
+var imgPathResponse = "./media/news/";
+var imgPath         = "./app/media/news/";
 var upload          = multer({dest: imgPath})
 
 // Team API =================================================
 // Send object from DB =================================================
-router.get('/team', function(req, res, next) {
-	team.find(function(err, members) {
+router.get('/news', function(req, res, next) {
+	team.find(function(err, news) {
 	  if (err) return console.error(err);
-	  res.send(members)
+	  res.send(news)
 	});
 });
 
 // Get data for new team member =================================================
-router.post('/new_team',upload.single('file'), function (req, res, next) {
+router.post('/new_news',upload.single('file'), function (req, res, next) {
   var body = req.body;
   var file = req.file;
 
   // Check for existing required fields in the request =================================================
-  if (body.Name && body.LastName && body.Email && body.Position && file) {
+  if (body.Title && body.Description && body.Content && file) {
 
     // Check if image type is JPEG =================================================
     if (file.mimetype == "image/jpeg" && file.size < 500000) {
@@ -53,13 +54,17 @@ router.post('/new_team',upload.single('file'), function (req, res, next) {
         }
       });
 
+      // Get current date =================================================
+      var now = moment(new Date());
+      var date = now.format("D MMM YYYY");
+
       // Create model =================================================
       var member = new team({
-        name: body.Name,
-        lastName: body.LastName,
+        title: body.Title,
+        description: body.Description,
         image: imgPathResponse + file.filename + ".jpg",
-        email: body.Email,
-        position: body.Position
+        date: date,
+        content: body.Content
       });
 
       // Push to DB =================================================
@@ -71,15 +76,15 @@ router.post('/new_team',upload.single('file'), function (req, res, next) {
       res.end("ok")
     } else{
       // remove temporary file =================================================
-      fs.unlink(imgPath + file.filename, function(err) {})
+      fs.unlink(imgPath + file.filename, function(err) {});
       // Send status =================================================
       res.end("image type must be 'jpg' or image size more than 500kb");
     };
   } else{
     // remove temporary file =================================================
-    fs.unlink(imgPath + file.filename, function(err) {})
+    fs.unlink(imgPath + file.filename, function(err) {});
     // Send status =================================================
-    res.end("required fields are empty")
+    res.end("required fields are empty");
   };
 });
 

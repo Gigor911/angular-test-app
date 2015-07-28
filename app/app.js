@@ -116,9 +116,46 @@ speroteck.directive('siteFooter', function () {
 });
 speroteck.controller('AdminController', ['$scope', '$http', function($scope,$http) {
 	$scope = [];
+	$(document).on('click', '.pg_admin .nav-tabs li', function(event) {
+		$(this).addClass('active').siblings('li').removeClass('active');
+		var linkToContent = $(this).attr('data-link');
+		$('#' + linkToContent).addClass('active').siblings('div').removeClass('active');
+	});
 }]);
 speroteck.controller('NavigationController', ['$scope', '$http','$element', function($scope,$http,$element) {
 	// console.log($($element).children('li').length)
+}]);
+speroteck.controller('newsDashController', ['$scope', '$http', function($scope,$http) {
+	// Get data from server and create table with team members ===========================================
+	$scope.news = [];
+
+    $http.get('/news').success(function(data) {
+        $scope.news = data;
+    });
+
+    // Form post function ===========================================
+    $scope.postForm = function() {
+	    var form = document.getElementById("new_news_form");
+		var data = new FormData(form);
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', '/new_news', true);
+		xhr.send(data);
+
+		xhr.onload = function() {
+	        if (this.responseText === "ok") {
+	        	// Notification ===========================================
+	            alert("news was created succesfully")
+	            // Get new data from server and put to scope ===========================================
+	            $http.get('/news').success(function(data) {
+			        $scope.news = data;
+			    });
+	        } else{
+	        	// Notification ===========================================
+	           	alert(this.responseText);
+	        }
+	    }
+	};
+	$scope.$apply;
 }]);
 speroteck.controller('ourTeamDashController', ['$scope', '$http', function($scope,$http) {
 	// Get data from server and create table with team members ===========================================
@@ -127,8 +164,8 @@ speroteck.controller('ourTeamDashController', ['$scope', '$http', function($scop
         $scope.team = data;
     });
 
-    // File uploading fucntion ===========================================
-    $scope.uploadFile = function() {
+    // Form post function ===========================================
+    $scope.postForm = function() {
 	    var form = document.getElementById("new_team_form");
 		var data = new FormData(form);
 		var xhr = new XMLHttpRequest();

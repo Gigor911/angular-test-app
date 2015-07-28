@@ -1,26 +1,24 @@
 <div class="container" ng-controller="ourTeamDashController">
-	<br>
-
 	<!-- Form for creating new team member -->
 	<form name="newTeam" id="new_team_form" action="/new_team" enctype="multipart/form-data" method="post">
 		<legend>New team member</legend>
 
 		<div class="row">
 			<div class="form-group col-xs-12 col-sm-3">
-				<label for="name">Name</label>
-				<input type="text" class="form-control" id="name" name="Name" placeholder="Name" required >
+				<label>Name</label>
+				<input type="text" class="form-control"name="Name">
 			</div>
 			<div class="form-group col-xs-12 col-sm-3">
-				<label for="lastName">Last Name</label>
-				<input type="text" class="form-control" id="lastName" name="LastName" placeholder="Last Name" required >
+				<label>Last Name</label>
+				<input type="text" class="form-control" name="LastName">
 			</div>
 			<div class="form-group col-xs-12 col-sm-3">
-				<label for="email">Email</label>
-				<input type="email" class="form-control" id="email" name="Email" placeholder="Email" required >
+				<label>Email</label>
+				<input type="email" class="form-control" name="Email">
 			</div>
 			<div class="form-group col-xs-12 col-sm-3">
-				<label for="position">Position</label>
-				<select class="form-control" id="position" name="Position" required >
+				<label>Position</label>
+				<select class="form-control" name="Position">
 					<option value="Frontend developer">Frontend developer</option>
 					<option value="Backend developer">Backend developer</option>
 					<option value="System administrator">System administrator</option>
@@ -33,16 +31,16 @@
 				</select>
 			</div>
 			<div class="form-group col-xs-12 col-sm-3" style="position: relative">
-				<label for="image">Image uploading</label>
+				<label>Image uploading</label>
 				<div class="btn btn-default form-control" style="padding: 0; position: relative;">
 					<span style="display: block; position: absolute; left: 1px; right: 1px; top: 6px; line-height: 1.42857143">Select File</span>
-					<input style="opacity: 0" type="file" class="form-control" id="image" placeholder="Image" type="file" name="file" required >
+					<input style="opacity: 0" type="file" class="form-control" name="file">
 				</div>
 			</div>
 			<div class="form-group col-xs-12 col-sm-3">
-				<label for="">Form submit</label>
+				<label>Form submit</label>
 				<div></div>
-				<div ng-click="uploadFile()" class="btn btn-primary col-xs-12">Submit</div>
+				<div ng-click="postForm()" class="btn btn-primary col-xs-12">Submit</div>
 			</div>
 		</div>
 	</form>
@@ -64,11 +62,11 @@
 		<thead>
 			<tr>
 				<th>Image</th>
-				<th>Id</th>
 				<th>Name</th>
 				<th>Last Name</th>
 				<th>Email</th>
 				<th>Position</th>
+				<th>Id</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
@@ -77,11 +75,11 @@
 				<td class="text-center">
 					<img ng-src="{{member.image}}" alt="" style="width: 40px">
 				</td>
-				<td>{{member._id}}</td>
 				<td>{{member.name}}</td>
 				<td>{{member.lastName}}</td>
 				<td>{{member.email}}</td>
 				<td>{{member.position}}</td>
+				<td>{{member._id}}</td>
 				<td>
 					<div class="btn btn-danger btn-block">
 						<span class="fa fa-times" aria-hidden="true"></span>

@@ -31,11 +31,15 @@ app.use(express.static(__dirname + '/app')); // set the static files location /p
 
 // Routes ==================================================
 var teamCtrl = require('./controllers/team');
+var newsCtrl = require('./controllers/news');
 var clientsCtrl = require('./controllers/clients');
 
 // Routs ==================================================
 app.get('/team', teamCtrl);
 app.post('/new_team', teamCtrl);
+
+app.get('/news', newsCtrl);
+app.post('/new_news', newsCtrl);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
