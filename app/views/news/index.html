@@ -1,0 +1,24 @@
+<div class="content-bg pg_news">
+    <div class="heading-image-full-width">
+        <img ng-src="assets/images/header-images/speroteck-news.jpg" alt="">
+        <div class="heading-text-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>News & Events</h1>
+                        <span class="text-under-heading"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container content-body">
+        <div class="btn-group pull-right" role="group">
+            <a href class="btn btn-default" ng-class="{active: layout == 'list'}" ng-click="layout = 'list'"><i class="fa fa-bars"></i></a>
+            <a href class="btn btn-default" ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'"><i class="fa fa-th-large"></i></a>
+        </div>
+        <div class="clearfix"></div>
+        <div ng-show="layout == 'grid'" ng-include src="'views/news/grid.html'"></div>
+        <div ng-show="layout == 'list'" ng-include src="'views/news/list.html'"></div>
+    </div>
+</div>

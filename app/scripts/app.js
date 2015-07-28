@@ -7,17 +7,22 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
         }).
         when('/dashboard', {
             templateUrl: 'views/dashboard/index.html',
-            controller: 'AdminController',
-            //noMenu: true
+            controller: 'AdminController'
         }).
         when('/our-team', {
             templateUrl: 'views/ourteam.html',
             controller: 'OurTeamController'
         }).
+        when('/news', {
+            templateUrl: 'views/news/index.html',
+            controller: 'NewsController'
+        }).
         otherwise({
         	redirectTo: '/'
       	});
 }]);
+
+/* Used to hide menu and footer for admin panel  */
 speroteck.run(['$route', '$rootScope', '$location', function ($route, $rootScope, $location) {
     $rootScope.$on("$routeChangeSuccess", function(){
         $rootScope.noMenu = $location.path() === '/dashboard';

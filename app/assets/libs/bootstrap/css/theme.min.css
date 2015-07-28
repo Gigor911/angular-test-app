@@ -335,9 +335,9 @@ hr{margin-top:20px;margin-bottom:20px;border:0;border-top:1px solid #eee}
 .h1,h1{font-size:48px}
 .h2,h2{font-size:40px}
 .h3,h3{font-size:36px}
-.h4,h4{font-size:18px}
-.h5,h5{font-size:14px}
-.h6,h6{font-size:12px}
+.h4,h4{font-size:24px}
+.h5,h5{font-size:20px}
+.h6,h6{font-size:18px}
 p{margin:0 0 10px}
 .lead{margin-bottom:20px;font-size:16px;font-weight:300;line-height:1.4}
 address,blockquote .small,blockquote footer,blockquote small,dd,dt,pre{line-height:1.42857143}

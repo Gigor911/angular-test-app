@@ -7,17 +7,22 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
         }).
         when('/dashboard', {
             templateUrl: 'views/dashboard/index.html',
-            controller: 'AdminController',
-            //noMenu: true
+            controller: 'AdminController'
         }).
         when('/our-team', {
             templateUrl: 'views/ourteam.html',
             controller: 'OurTeamController'
         }).
+        when('/news', {
+            templateUrl: 'views/news/index.html',
+            controller: 'NewsController'
+        }).
         otherwise({
         	redirectTo: '/'
       	});
 }]);
+
+/* Used to hide menu and footer for admin panel  */
 speroteck.run(['$route', '$rootScope', '$location', function ($route, $rootScope, $location) {
     $rootScope.$on("$routeChangeSuccess", function(){
         $rootScope.noMenu = $location.path() === '/dashboard';
@@ -76,6 +81,45 @@ speroteck.controller('MenuController', ['$scope', function($scope) {
         return this;
     };
 
+}]);
+speroteck.controller('NewsController', ['$scope', '$http', function($scope, $http) {
+    $scope.news_pool= [{
+        img : "//www.speroteck.com/media/speroteck_news/8.jpg",
+        short_description : "Make sure you use these tools to enhance your site's performance",
+        description : "Search Engines run through your site and rank it based on many aspects. These SEO tools provide insights on major aspects: site's speed, backlinks, mobile-friendliness... and much more",
+        header : "ESSENTIAL SEO TOOLS - MUST HAVE FOR YOUR WEBSITE",
+        date : "10.02.03"
+        },
+        {
+            img : "//www.speroteck.com/media/speroteck_news/8.jpg",
+            short_description : "Make sure you use these tools to enhance your site's performance",
+            description : "Search Engines run through your site and rank it based on many aspects. These SEO tools provide insights on major aspects: site's speed, backlinks, mobile-friendliness... and much more",
+            header : "ESSENTIAL SEO TOOLS - MUST HAVE FOR YOUR WEBSITE",
+            date : "10.02.03"
+        },
+        {
+            img : "//www.speroteck.com/media/speroteck_news/8.jpg",
+            short_description : "Make sure you use these tools to enhance your site's performance",
+            description : "Search Engines run through your site and rank it based on many aspects. These SEO tools provide insights on major aspects: site's speed, backlinks, mobile-friendliness... and much more",
+            header : "ESSENTIAL SEO TOOLS - MUST HAVE FOR YOUR WEBSITE",
+            date : "10.02.03"
+        },
+        {
+            img : "//www.speroteck.com/media/speroteck_news/8.jpg",
+            short_description : "Make sure you use these tools to enhance your site's performance",
+            description : "Search Engines run through your site and rank it based on many aspects. These SEO tools provide insights on major aspects: site's speed, backlinks, mobile-friendliness... and much more",
+            header : "ESSENTIAL SEO TOOLS - MUST HAVE FOR YOUR WEBSITE",
+            date : "10.02.03"
+        },
+        {
+            img : "//www.speroteck.com/media/speroteck_news/8.jpg",
+            short_description : "Make sure you use these tools to enhance your site's performance",
+            description : "Search Engines run through your site and rank it based on many aspects. These SEO tools provide insights on major aspects: site's speed, backlinks, mobile-friendliness... and much more",
+            header : "ESSENTIAL SEO TOOLS - MUST HAVE FOR YOUR WEBSITE",
+            date : "10.02.03"
+        }
+    ];
+    $scope.layout = 'list';
 }]);
 speroteck.controller('OurTeamController', ['$scope', '$http', function ($scope, $http) {
     $scope.team = [];
