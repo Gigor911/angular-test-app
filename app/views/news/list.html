@@ -1,12 +1,15 @@
 <div class="row">
     <div class="col-md-12 news-list-block" ng-repeat="news in news_pool">
         <div class="row">
-            <div class="col-md-4"><img class="news-image" ng-src="{{news.img}}" alt=""></div>
+            <div class="col-md-4">
+                <img class="news-image" ng-src="{{news.image}}" alt="">
+            </div>
             <div class="col-md-8">
                 <p>{{news.date}}</p>
-                <h4>{{news.header}}</h4>
-                <p>{{news.short_description}}</p>
+                <h4>{{news.title}}</h4>
                 <p>{{news.description}}</p>
+                <p>{{news.content}}</p>
+                <p>{{news._id}}</p>
             </div>
         </div>
     </div>
