@@ -21,6 +21,10 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'views/news/news_details.html',
             controller: 'NewsDetailsController'
         }).
+        when('/our-clients', {
+            templateUrl: 'views/our_clients/index.html',
+            controller: 'OurClientsController'
+        }).
         otherwise({
         	redirectTo: '/'
       	});
@@ -101,6 +105,13 @@ speroteck.controller('NewsDetailsController', ['$scope', '$http', '$routeParams'
     });
 }]);
 
+speroteck.controller('OurClientsController', ['$scope', '$http', function ($scope, $http) {
+    $scope.our_clients = [];
+    $http.get('/our-clients').success(function(data) {
+        $scope.our_clients = data;
+    });
+    $scope.layout = 'list';
+}]);
 speroteck.controller('OurTeamController', ['$scope', '$http', function ($scope, $http) {
     $scope.team = [];
     $http.get('/team').success(function(data) {

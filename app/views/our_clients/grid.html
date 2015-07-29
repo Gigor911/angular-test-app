@@ -1,0 +1,8 @@
+<div class="row">
+    <div class="col-md-3 clients-grid-block" ng-repeat="client in our_clients">
+        <img class="clients-image" ng-src="{{client.image}}">
+        <h4>{{client.title}}</h4>
+        <p>{{client.description}}</p>
+        <a href="{{client.link}}">Go to site</a>
+    </div>
+</div>

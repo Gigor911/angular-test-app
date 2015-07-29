@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-md-12 clients-list-block" ng-repeat="client in our_clients">
+        <div class="row">
+            <div class="col-md-2">
+                <img class="clients-image" ng-src="{{client.image}}">
+            </div>
+            <div class="col-md-10">
+                <h4>{{client.title}}</h4>
+                <p>{{client.description}}</p>
+                <a href="{{client.link}}">Go to site</a>
+            </div>
+        </div>
+    </div>
+</div>
