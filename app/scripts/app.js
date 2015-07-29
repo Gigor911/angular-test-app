@@ -17,6 +17,10 @@ speroteck.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'views/news/index.html',
             controller: 'NewsController'
         }).
+        when('/news/:news_id', {
+            templateUrl: 'views/news/news_details.html',
+            controller: 'NewsDetailsController'
+        }).
         otherwise({
         	redirectTo: '/'
       	});
