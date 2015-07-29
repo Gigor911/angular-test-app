@@ -96,7 +96,7 @@ speroteck.controller('NewsController', ['$scope', '$http', function($scope, $htt
 speroteck.controller('NewsDetailsController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
     $scope.news = [];
     $scope.news_id = $routeParams.news_id;
-    $http.get('/news/' + news_id).success(function(data) {
+    $http.get('/news/' + $scope.news_id).success(function(data) {
         $scope.news = data;
     });
 }]);
@@ -149,37 +149,6 @@ speroteck.controller('AdminController', ['$scope', '$http', function($scope,$htt
 speroteck.controller('NavigationController', ['$scope', '$http','$element', function($scope,$http,$element) {
 	// console.log($($element).children('li').length)
 }]);
-speroteck.controller('ourTeamDashController', ['$scope', '$http', function($scope,$http) {
-	// Get data from server and create table with team members ===========================================
-	$scope.team = [];
-    $http.get('/team').success(function(data) {
-        $scope.team = data;
-    });
-
-    // Form post function ===========================================
-    $scope.postForm = function() {
-	    var form = document.getElementById("new_team_form");
-		var data = new FormData(form);
-		var xhr = new XMLHttpRequest();
-		xhr.open('POST', '/new_team', true);
-		xhr.send(data);
-
-		xhr.onload = function() {
-	        if (this.responseText === "ok") {
-	        	// Notification ===========================================
-	            alert("team member was created succesfully")
-	            // Get new data from server and put to scope ===========================================
-	            $http.get('/team').success(function(data) {
-			        $scope.team = data;
-			    });
-	        } else{
-	        	// Notification ===========================================
-	           	alert(this.responseText);
-	        }
-	    }
-	};
-	$scope.$apply;
-}]);
 speroteck.controller('newsDashController', ['$scope', '$http', function($scope,$http) {
 	// Get data from server and create table with team members ===========================================
 	$scope.news = [];
@@ -203,6 +172,37 @@ speroteck.controller('newsDashController', ['$scope', '$http', function($scope,$
 	            // Get new data from server and put to scope ===========================================
 	            $http.get('/news').success(function(data) {
 			        $scope.news = data;
+			    });
+	        } else{
+	        	// Notification ===========================================
+	           	alert(this.responseText);
+	        }
+	    }
+	};
+	$scope.$apply;
+}]);
+speroteck.controller('ourTeamDashController', ['$scope', '$http', function($scope,$http) {
+	// Get data from server and create table with team members ===========================================
+	$scope.team = [];
+    $http.get('/team').success(function(data) {
+        $scope.team = data;
+    });
+
+    // Form post function ===========================================
+    $scope.postForm = function() {
+	    var form = document.getElementById("new_team_form");
+		var data = new FormData(form);
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', '/new_team', true);
+		xhr.send(data);
+
+		xhr.onload = function() {
+	        if (this.responseText === "ok") {
+	        	// Notification ===========================================
+	            alert("team member was created succesfully")
+	            // Get new data from server and put to scope ===========================================
+	            $http.get('/team').success(function(data) {
+			        $scope.team = data;
 			    });
 	        } else{
 	        	// Notification ===========================================
