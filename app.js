@@ -39,6 +39,7 @@ app.get('/team', teamCtrl);
 app.post('/new_team', teamCtrl);
 
 app.get('/news', newsCtrl);
+app.get('/news/:id', newsCtrl);
 app.post('/new_news', newsCtrl);
 
 // catch 404 and forward to error handler

@@ -19,7 +19,7 @@ var newsMemberSchema = new mongoose.Schema({
 });
 
 // Mongoose model =================================================
-var team = mongoose.model('news', newsMemberSchema);
+var news = mongoose.model('news', newsMemberSchema);
 
 // Variables =================================================
 var imgPathResponse = "./media/news/";
@@ -29,7 +29,7 @@ var upload          = multer({dest: imgPath})
 // Team API =================================================
 // Send object from DB =================================================
 router.get('/news', function(req, res, next) {
-	team.find(function(err, news) {
+	news.find(function(err, news) {
 	  if (err) return console.error(err);
 	  res.send(news)
 	});
@@ -86,6 +86,13 @@ router.post('/new_news',upload.single('file'), function (req, res, next) {
     // Send status =================================================
     res.end("required fields are empty");
   };
+});
+
+router.get('/news/:id', function(req, res, next) {
+  var id = req.params.id;
+  news.findById(id, function(err, news) {
+    res.send(news)
+  })
 });
 
 module.exports = router;
