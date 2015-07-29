@@ -38,6 +38,9 @@ var clientsCtrl = require('./controllers/clients');
 app.get('/team', teamCtrl);
 app.post('/new_team', teamCtrl);
 
+app.get('/clients', clientsCtrl);
+app.post('/new_clients', clientsCtrl);
+
 app.get('/news', newsCtrl);
 app.get('/news/:id', newsCtrl);
 app.post('/new_news', newsCtrl);

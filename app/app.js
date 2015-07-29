@@ -105,13 +105,6 @@ speroteck.controller('NewsDetailsController', ['$scope', '$http', '$routeParams'
     });
 }]);
 
-speroteck.controller('OurClientsController', ['$scope', '$http', function ($scope, $http) {
-    $scope.our_clients = [];
-    $http.get('/our-clients').success(function(data) {
-        $scope.our_clients = data;
-    });
-    $scope.layout = 'list';
-}]);
 speroteck.controller('OurTeamController', ['$scope', '$http', function ($scope, $http) {
     $scope.team = [];
     $http.get('/team').success(function(data) {
@@ -121,6 +114,14 @@ speroteck.controller('OurTeamController', ['$scope', '$http', function ($scope, 
         pageTitle : 'Our Team',
         pageMetaDescription : 'Test SEO :)'
     };
+}]);
+speroteck.controller('OurClientsController', ['$scope', '$http', function ($scope, $http) {
+    $scope.our_clients = [];
+    $http.get('/clients').success(function(data) {
+        $scope.our_clients = data;
+    });
+    
+    $scope.layout = 'list';
 }]);
 speroteck.controller('MainController', ['$scope', function($scope) {
     $scope.seo = {
@@ -183,6 +184,37 @@ speroteck.controller('newsDashController', ['$scope', '$http', function($scope,$
 	            // Get new data from server and put to scope ===========================================
 	            $http.get('/news').success(function(data) {
 			        $scope.news = data;
+			    });
+	        } else{
+	        	// Notification ===========================================
+	           	alert(this.responseText);
+	        }
+	    }
+	};
+	$scope.$apply;
+}]);
+speroteck.controller('ourClientsDashController', ['$scope', '$http', function($scope,$http) {
+	// Get data from server and create table with team members ===========================================
+	$scope.team = [];
+    $http.get('/clients').success(function(data) {
+        $scope.clients = data;
+    });
+
+    // Form post function ===========================================
+    $scope.postForm = function() {
+	    var form = document.getElementById("new_client_form");
+		var data = new FormData(form);
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', '/new_clients', true);
+		xhr.send(data);
+
+		xhr.onload = function() {
+	        if (this.responseText === "ok") {
+	        	// Notification ===========================================
+	            alert("client was created succesfully")
+	            // Get new data from server and put to scope ===========================================
+	            $http.get('/clients').success(function(data) {
+			        $scope.clients = data;
 			    });
 	        } else{
 	        	// Notification ===========================================
