@@ -26,17 +26,16 @@ var imgPathResponse = "./media/clients/";
 var imgPath         = "./app/media/clients/";
 var upload          = multer({dest: imgPath})
 
-// Team API =================================================
+// Clients API =================================================
 // Send object from DB =================================================
 router.get('/clients', function(req, res, next) {
 	client.find(function(err, client) {
 	  if (err) return console.error(err);
 	  res.send(client)
-    console.log(client)
 	});
 });
 
-// Get data for new team member =================================================
+// Get data for new client =================================================
 router.post('/new_clients',upload.single('file'), function (req, res, next) {
   var body = req.body;
   var file = req.file;
