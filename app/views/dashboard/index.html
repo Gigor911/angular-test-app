@@ -1,37 +1,40 @@
 <div class="pg_admin">
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs nav-justified" ng-controller="NavigationController">
-        <li data-link="our_team">
-            <a href="">Our team</a>
-        </li>
-        <li data-link="our_clients">
-            <a href="">Our Clients</a>
-        </li>
-        <li data-link="news" class="active">
-            <a href="">News</a>
-        </li>
-        <li data-link="statistics">
-            <a href="">Statistics</a>
-        </li>
-    </ul>
-    <div class="container return-link-top">
-        <a class="btn btn-danger pull-right" href="#/">Return to storefront</a>
-        <a class="btn btn-danger pull-left" href="#/" target="_blank">Storefront in new tab</a>
-    </div>
+    <div class="pg_admin_canvas">
+        <!-- Nav tabs -->
+        <ul class=" pg_admin_menu nav nav-tabs" ng-controller="NavigationController">
+            <li class="logo"><img ng-src="assets/images/menu/logo.png" alt="Logo"</li>
+            <li data-link="dashboard">
+                <a href=""><i class="fa fa-bar-chart"></i> Dashboard</a>
+            </li>
+            <li data-link="our_team">
+                <a href=""><i class="fa fa-users"></i> Our Team</a>
+            </li>
+            <li data-link="our_clients">
+                <a href=""><i class="fa fa-suitcase"></i> Our Clients</a>
+            </li>
+            <li data-link="news" class="active">
+                <a href=""><i class="fa fa-newspaper-o"></i> News</a>
+            </li>
+        </ul>
+        <div class="container return-link-top">
+            <button class="toggle-nav btn btn-default pull-left"><i class="fa fa-bars"></i></button>
+            <a class="btn btn-danger pull-right" href="#/">Return to storefront</a>
+            <a class="btn btn-danger pull-left" href="#/" target="_blank">Storefront in new tab</a>
+        </div>
 
-    <div class="tabs">
-        <div id="our_team">
-            <div ng-include src="'views/dashboard/inners/ourTeam.html'"></div>
-        </div>
-        <div id="our_clients">
-            <div ng-include src="'views/dashboard/inners/ourClients.html'"></div>
-        </div>
-        <div id="news" class="active">
-            <div ng-include src="'views/dashboard/inners/news.html'"></div>
-        </div>
-        <div id="statistics">
-            
+        <div class="tabs">
+            <div id="dashboard" class="active">
+                <div ng-include src="'views/dashboard/inners/dashboard.html'"></div>
+            </div>
+            <div id="our_team">
+                <div ng-include src="'views/dashboard/inners/ourTeam.html'"></div>
+            </div>
+            <div id="our_clients">
+                <div ng-include src="'views/dashboard/inners/ourClients.html'"></div>
+            </div>
+            <div id="news">
+                <div ng-include src="'views/dashboard/inners/news.html'"></div>
+            </div>
         </div>
     </div>
-
 </div>

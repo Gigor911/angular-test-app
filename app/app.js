@@ -95,7 +95,16 @@ speroteck.controller('NewsController', ['$scope', '$http', function($scope, $htt
     $http.get('/news').success(function(data) {
         $scope.news_pool = data;
     });
-    $scope.layout = 'list';
+    $scope.layout = 'grid';
+    $scope.layout = localStorage.getItem("layout");
+    $scope.setGrid = function () {
+        localStorage.setItem("layout", "grid");
+        $scope.layout = localStorage.getItem("layout");
+    };
+    $scope.setList = function () {
+        localStorage.setItem("layout", "list");
+        $scope.layout = localStorage.getItem("layout");
+    }
 }]);
 speroteck.controller('NewsDetailsController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
     $scope.news = [];
@@ -105,6 +114,22 @@ speroteck.controller('NewsDetailsController', ['$scope', '$http', '$routeParams'
     });
 }]);
 
+speroteck.controller('OurClientsController', ['$scope', '$http', function ($scope, $http) {
+    $scope.our_clients = [];
+    $http.get('/clients').success(function(data) {
+        $scope.our_clients = data;
+    });
+    $scope.layout = 'grid';
+    $scope.layout = localStorage.getItem("layout");
+    $scope.setGrid = function () {
+        localStorage.setItem("layout", "grid");
+        $scope.layout = localStorage.getItem("layout");
+    };
+    $scope.setList = function () {
+        localStorage.setItem("layout", "list");
+        $scope.layout = localStorage.getItem("layout");
+    }
+}]);
 speroteck.controller('OurTeamController', ['$scope', '$http', function ($scope, $http) {
     $scope.team = [];
     $http.get('/team').success(function(data) {
@@ -114,14 +139,6 @@ speroteck.controller('OurTeamController', ['$scope', '$http', function ($scope, 
         pageTitle : 'Our Team',
         pageMetaDescription : 'Test SEO :)'
     };
-}]);
-speroteck.controller('OurClientsController', ['$scope', '$http', function ($scope, $http) {
-    $scope.our_clients = [];
-    $http.get('/clients').success(function(data) {
-        $scope.our_clients = data;
-    });
-    
-    $scope.layout = 'list';
 }]);
 speroteck.controller('MainController', ['$scope', function($scope) {
     $scope.seo = {
@@ -159,7 +176,17 @@ speroteck.controller('AdminController', ['$scope', '$http', function($scope,$htt
 	});
 }]);
 speroteck.controller('NavigationController', ['$scope', '$http','$element', function($scope,$http,$element) {
-	// console.log($($element).children('li').length)
+	// console.log(jQuery($element).children('li').length)
+    /* Toggle off-canvas menu */
+    jQuery('.toggle-nav').click(function() {
+        if (jQuery('.pg_admin').hasClass('show-nav')) {
+            // Do things on Nav Close
+            jQuery('.pg_admin').removeClass('show-nav');
+        } else {
+            // Do things on Nav Open
+            jQuery('.pg_admin').addClass('show-nav');
+        }
+    });
 }]);
 speroteck.controller('newsDashController', ['$scope', '$http', function($scope,$http) {
 	// Get data from server and create table with team members ===========================================

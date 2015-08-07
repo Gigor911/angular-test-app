@@ -1,5 +1,13 @@
+.no-padding .page, .no-padding > div {
+  min-height: 100vhs;
+  clear: both;
+}
 .pg_admin {
-  margin-top: -40px;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  clear: both;
+  overflow: hidden;
   .btn {
     transition: all ease 0.3s;
   }
@@ -11,5 +19,116 @@
   	> div:not(.active) {
   		display: none;
   	}
+  }
+  /* Navigation for admin */
+  .pg_admin_canvas {
+    background: @grey;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
+    transition: 300ms ease all;
+    backface-visibility: hidden;
+  }
+  &.show-nav .pg_admin_canvas {
+    transform: translateX(300px);
+    transform: translate3d(300px, 0, 0);
+  }
+  .pg_admin_menu {
+    background: @dark-grey;
+    width: 295px;
+    margin-right: 5px;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: -300px;
+    padding: 15px;
+    box-sizing: border-box;
+    box-shadow: 2px 0 5px @dark-grey;
+    border: none;
+    li {
+      &.logo {
+        img {
+          display: block;
+          max-height: 50px;
+          margin: 0 auto;
+          background: @admin-menu-li-bg-hover;
+          border-radius: 4px;
+        }
+      }
+      display: inline-block;
+      width: 100%;
+      border: none;
+      border-radius: 4px;
+      margin: 1px 0;
+      &.active {
+        a {
+          background: @admin-menu-li-bg-active;
+          &:hover {
+            background: @admin-menu-li-bg-active;
+          }
+        }
+      }
+      &:hover {
+        border: none;
+      }
+      a {
+        transition: all ease 0.3s;
+        border: none;
+        font-size: 20px;
+        font-weight: 300;
+        border-radius: 4px;
+        padding: 9px;
+        color: @footer-text;
+        &:focus {
+          border: none;
+          background: @admin-menu-li-bg-active;
+          color: @footer-text;
+        }
+        &:hover {
+          transition: all ease 0.3s;
+          border: none;
+          color: @footer-text-hover;
+          background: @admin-menu-li-bg-hover;
+        }
+      }
+    }
+  }
+  .toggle-nav {
+    width: 35px;
+    height: 35px;
+    margin-right: 15px;
+    padding: 5px;
+    i {
+      color: @black;
+      font-size: 20px;
+      line-height: 25px;
+      text-align: center;
+    }
+  }
+  .container.dashboard {
+    .widget {
+      .pull-left {
+        width: 20%;
+      }
+      .pull-right {
+        width: 80%;
+      }
+      h5 {
+        margin-top: 0;
+      }
+      .fa {
+        font-size: 40px;
+        line-height: 40px;
+      }
+      .widget-inner {
+        padding: 10px;
+        background: @white;
+        border: 1px solid @grey;
+        border-radius: 4px;
+        box-shadow: 0 0 5px @dark-grey;
+      }
+    }
   }
 }

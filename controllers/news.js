@@ -59,7 +59,7 @@ router.post('/new_news',upload.single('file'), function (req, res, next) {
       var date = now.format("D MMM YYYY");
 
       // Create model =================================================
-      var member = new team({
+      var member = new news({
         title: body.Title,
         description: body.Description,
         image: imgPathResponse + file.filename + ".jpg",

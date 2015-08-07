@@ -24,9 +24,9 @@
     <site-header ng-hide="noMenu"></site-header>
     
     <!-- content -->
-    <main>
+    <main ng-class="{'no-padding' : noMenu}">
         <!-- dynamic content -->
-        <div class="push-footer">
+        <div ng-class="{'push-footer' : !noMenu}">
             <div class="page" ng-view></div>
         </div>
         <!-- footer -->
