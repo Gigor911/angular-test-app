@@ -1,4 +1,4 @@
-var speroteck = angular.module('speroteck-site', ['ngRoute', 'ngAnimate']);
+var speroteck = angular.module('speroteckSite', ['ngRoute', 'ngAnimate']);
 speroteck.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
         when('/', {

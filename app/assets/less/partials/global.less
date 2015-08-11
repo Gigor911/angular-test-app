@@ -11,27 +11,25 @@ li {
     .container {
       position: relative;
       left: -50%;
-      .text-under-heading {
-        font-size: 24px;
-        line-height: 36px;
-        font-weight: 300;
-        text-shadow: 1px 1px 0 @text-shadow;
-        a {
-          transition: all ease 0.3s;
-          &:hover {
-            text-decoration: none;
-          }
-        }
-      }
     }
-
   }
   img {
     width: 1920px;
     height: 400px;
     display: block;
   }
-
+}
+.text-under-heading {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 300;
+  text-shadow: 1px 1px 0 @text-shadow;
+  a {
+    transition: all ease 0.3s;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 p {
   font-size: 16px;
@@ -83,4 +81,7 @@ footer {
 @keyframes slideInRight {
   from    { transform:translateX(100%); }
   to      { transform: translateX(0); }
+}
+.layout-toggle {
+  padding: 20px 0;
 }
