@@ -1,5 +1,6 @@
 <div class="row">
-    <div class="col-md-12 news-list-block" ng-repeat="news in news_pool">
+    <div class="col-md-12" ng-repeat="news in news_pool">
+        <div class="news-list-block">
         <div class="row">
             <div class="col-md-3">
                 <img class="news-image" ng-src="{{news.image}}" alt="">
@@ -10,6 +11,7 @@
                 <p>{{news.description}}</p>
                 <a class="btn btn-default" href="#/news/{{news._id}}">Read more</a>
             </div>
+        </div>
         </div>
     </div>
 </div>

@@ -5,18 +5,32 @@
   }
 }
 .our-team {
-  div {
+  div.col-sm-3 {
     position: relative;
     overflow: hidden;
     padding: 0;
     margin: 10px 15px;
-    @media screen and (max-width: 768px) {
+    border: 2px solid @white;
+    @media screen and (max-width: 767px) {
       margin: 10px auto;
       float: none;
+    }
+    @media screen and (min-width: 1200px) {
+      height: 420px;
+    }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      height: 335px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      height: 260px;
     }
     .member-img {
       width: 100%;
       border-radius: 5px;
+      @media screen and (min-width: 768px) {
+        position: absolute;
+        bottom: 0;
+      }
     }
     .member-name {
       display: block;
