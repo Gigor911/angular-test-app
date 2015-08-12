@@ -1,15 +1,17 @@
 <div class="content-bg pg_news">
-    <div class="heading-image-full-width">
-        <img ng-src="assets/images/header-images/speroteck-news.jpg" alt="">
-        <div class="heading-text-container">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h1>News & Events</h1>
-                        <span class="text-under-heading"></span>
+    <div class="heading-image-full-width-rename" ng-controller="ParallaxController">
+        <div class="cd-background-wrapper">
+            <figure class="cd-floating-background">
+                <img ng-src="assets/images/news/news-1.jpg" alt="image-1">
+                <img ng-src="assets/images/news/news-1.png" alt="image-2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1>{{news.title}}</h1>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </figure>
         </div>
     </div>
     <div class="container">

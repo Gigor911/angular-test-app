@@ -1,4 +1,8 @@
 speroteck.controller('NewsController', ['$scope', '$http', function($scope, $http) {
+    $scope.$parent.seo = {
+        pageTitle : 'News',
+        pageMetaDescription : 'Test SEO :)',
+    }
     $scope.news_pool = [];
     $http.get('/news').success(function(data) {
         $scope.news_pool = data;

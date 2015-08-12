@@ -91,6 +91,10 @@ speroteck.controller('MenuController', ['$scope', function($scope) {
 
 }]);
 speroteck.controller('NewsController', ['$scope', '$http', function($scope, $http) {
+    $scope.$parent.seo = {
+        pageTitle : 'News',
+        pageMetaDescription : 'Test SEO :)',
+    }
     $scope.news_pool = [];
     $http.get('/news').success(function(data) {
         $scope.news_pool = data;
@@ -156,7 +160,7 @@ speroteck.controller('ParallaxController', function() {
             aspectRatio;
 
         //detect if hero <img> has been loaded and evaluate its aspect-ratio
-        jQuery('.cd-floating-background').find('img, .container').eq(0).load(function() {
+        jQuery('.cd-floating-background').find('img').eq(0).load(function() {
             aspectRatio = jQuery(this).width()/jQuery(this).height();
             if( mediaQuery == 'web' && jQuery('html').hasClass('preserve-3d') ) initBackground();
         }).each(function() {
